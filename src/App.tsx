@@ -659,7 +659,7 @@ function App() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
+      <section id="pricing" className="py-20 md:py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
@@ -681,43 +681,43 @@ function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-6"
           >
             {/* Free Tier */}
             <motion.div
               variants={staggerItem}
-              className="rounded-2xl p-8 bg-[#141414] border border-white/10 hover:border-white/20 transition-all"
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
             >
-              <div className="mb-6">
-                <h3 className="text-2xl font-semibold text-white mb-2">Free</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-medium text-white">$0</span>
-                  <span className="text-[#888]">/forever</span>
+              <h3 className="text-xl font-medium text-white mb-2">Free</h3>
+              <p className="text-sm text-[#888] mb-6">
+                Get started with ZamaniChat. Perfect for trying out consent-first AI.
+              </p>
+
+              {/* Pricing Display */}
+              <div className="rounded-xl bg-[#0a0a0a] p-4 mb-6">
+                <div className="flex items-baseline gap-1 mb-3">
+                  <span className="text-3xl font-medium text-white">$0</span>
+                  <span className="text-sm text-[#666]">/forever</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs text-[#888]">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>20 messages/day</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[#888]">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>Private & Contributing modes</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[#666]">
+                    <X className="w-3 h-3" />
+                    <span>No rewards</span>
+                  </div>
                 </div>
               </div>
 
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">20 messages per day</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Toggle Private/Contributing modes</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Access to ZamaniChat basic features</span>
-                </li>
-                <li className="flex items-start gap-3 opacity-50">
-                  <X className="w-5 h-5 text-[#666] mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#666]">No rewards for contributions</span>
-                </li>
-              </ul>
-
               <a
                 href="/chat"
-                className="block w-full px-6 py-3 text-center text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+                className="block w-full px-4 py-2.5 text-center text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
               >
                 Start Free
               </a>
@@ -726,42 +726,42 @@ function App() {
             {/* Plus Tier */}
             <motion.div
               variants={staggerItem}
-              className="rounded-2xl p-8 bg-gradient-to-br from-emerald-900/20 to-emerald-800/10 border-2 border-emerald-500/30 hover:border-emerald-500/50 transition-all relative"
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5 relative"
             >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-emerald-500 text-black text-xs font-semibold rounded-full">
+              <div className="absolute -top-2 right-4 px-2 py-0.5 bg-emerald-500 text-black text-[10px] font-semibold rounded">
                 POPULAR
               </div>
 
-              <div className="mb-6">
-                <h3 className="text-2xl font-semibold text-white mb-2">Plus</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-medium text-white">$12</span>
-                  <span className="text-[#888]">/month</span>
+              <h3 className="text-xl font-medium text-white mb-2">Plus</h3>
+              <p className="text-sm text-[#888] mb-6">
+                Earn rewards for your contributions. Join the marketplace.
+              </p>
+
+              {/* Pricing Display */}
+              <div className="rounded-xl bg-[#0a0a0a] p-4 mb-6 border border-emerald-500/20">
+                <div className="flex items-baseline gap-1 mb-3">
+                  <span className="text-3xl font-medium text-white">$12</span>
+                  <span className="text-sm text-[#666]">/month</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs text-[#888]">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>100 messages/day</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-emerald-400">
+                    <Check className="w-3 h-3" />
+                    <span className="font-medium">Earn rewards</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[#888]">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>Marketplace access</span>
+                  </div>
                 </div>
               </div>
 
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">100 messages per day</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Toggle Private/Contributing modes</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-white font-medium">Earn rewards when contributing</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Marketplace participation</span>
-                </li>
-              </ul>
-
               <a
                 href="/chat"
-                className="block w-full px-6 py-3 text-center text-sm font-medium rounded-full bg-emerald-500 text-black hover:bg-emerald-400 transition-colors"
+                className="block w-full px-4 py-2.5 text-center text-sm font-medium rounded-full bg-emerald-500 text-black hover:bg-emerald-400 transition-colors"
               >
                 Get Plus
               </a>
@@ -770,42 +770,42 @@ function App() {
             {/* Pro Tier */}
             <motion.div
               variants={staggerItem}
-              className="rounded-2xl p-8 bg-[#141414] border border-white/10 hover:border-white/20 transition-all"
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
             >
-              <div className="mb-6">
-                <h3 className="text-2xl font-semibold text-white mb-2">Pro</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-medium text-white">$29</span>
-                  <span className="text-[#888]">/month</span>
+              <h3 className="text-xl font-medium text-white mb-2">Pro</h3>
+              <p className="text-sm text-[#888] mb-6">
+                Maximum rewards, unlimited usage, and priority access to new features.
+              </p>
+
+              {/* Pricing Display */}
+              <div className="rounded-xl bg-[#0a0a0a] p-4 mb-6">
+                <div className="flex items-baseline gap-1 mb-3">
+                  <span className="text-3xl font-medium text-white">$29</span>
+                  <span className="text-sm text-[#666]">/month</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs text-[#888]">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>Unlimited messages</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-emerald-400">
+                    <Check className="w-3 h-3" />
+                    <span className="font-medium">Maximum rewards</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[#888]">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>Agent Ryan access</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[#888]">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                    <span>Priority features</span>
+                  </div>
                 </div>
               </div>
 
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Unlimited messages</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Advanced consent controls</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-white font-medium">Maximum rewards for contributions</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Access to Agent Ryan</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#ccc]">Priority features and integrations</span>
-                </li>
-              </ul>
-
               <a
                 href="/chat"
-                className="block w-full px-6 py-3 text-center text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+                className="block w-full px-4 py-2.5 text-center text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
               >
                 Get Pro
               </a>
