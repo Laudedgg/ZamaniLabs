@@ -658,6 +658,163 @@ function App() {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
+              Choose your plan.
+            </h2>
+            <p className="text-lg text-[#888] max-w-2xl mx-auto">
+              Start free, upgrade when you're ready. All plans include explicit consent controls.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {/* Free Tier */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-8 bg-[#141414] border border-white/10 hover:border-white/20 transition-all"
+            >
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-2">Free</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-medium text-white">$0</span>
+                  <span className="text-[#888]">/forever</span>
+                </div>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">20 messages per day</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Toggle Private/Contributing modes</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Access to ZamaniChat basic features</span>
+                </li>
+                <li className="flex items-start gap-3 opacity-50">
+                  <X className="w-5 h-5 text-[#666] mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#666]">No rewards for contributions</span>
+                </li>
+              </ul>
+
+              <a
+                href="/chat"
+                className="block w-full px-6 py-3 text-center text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+              >
+                Start Free
+              </a>
+            </motion.div>
+
+            {/* Plus Tier */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-8 bg-gradient-to-br from-emerald-900/20 to-emerald-800/10 border-2 border-emerald-500/30 hover:border-emerald-500/50 transition-all relative"
+            >
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-emerald-500 text-black text-xs font-semibold rounded-full">
+                POPULAR
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-2">Plus</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-medium text-white">$12</span>
+                  <span className="text-[#888]">/month</span>
+                </div>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">100 messages per day</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Toggle Private/Contributing modes</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-white font-medium">Earn rewards when contributing</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Marketplace participation</span>
+                </li>
+              </ul>
+
+              <a
+                href="/chat"
+                className="block w-full px-6 py-3 text-center text-sm font-medium rounded-full bg-emerald-500 text-black hover:bg-emerald-400 transition-colors"
+              >
+                Get Plus
+              </a>
+            </motion.div>
+
+            {/* Pro Tier */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-8 bg-[#141414] border border-white/10 hover:border-white/20 transition-all"
+            >
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-2">Pro</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-medium text-white">$29</span>
+                  <span className="text-[#888]">/month</span>
+                </div>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Unlimited messages</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Advanced consent controls</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-white font-medium">Maximum rewards for contributions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Access to Agent Ryan</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#ccc]">Priority features and integrations</span>
+                </li>
+              </ul>
+
+              <a
+                href="/chat"
+                className="block w-full px-6 py-3 text-center text-sm font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+              >
+                Get Pro
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+
       {/* Final CTA */}
       <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
         <motion.div
