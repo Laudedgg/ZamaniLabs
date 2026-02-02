@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 
@@ -31,6 +31,29 @@ const staggerItem: Variants = {
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isContributing, setIsContributing] = useState(true);
+  const [selectedModel, setSelectedModel] = useState('Zamani Pro');
+  const [modelDropdownOpen, setModelDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const models = ['Zamani Pro', 'GPT-4o', 'Claude 3.5', 'Gemini Pro'];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setModelDropdownOpen(false);
+      }
+    };
+
+    if (modelDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [modelDropdownOpen]);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#e5e5e5]">
@@ -145,18 +168,68 @@ function App() {
                 {/* Right Controls */}
                 <div className="flex items-center gap-2">
                   {/* Consent Toggle */}
-                  <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30">
-                    <Heart className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-xs text-emerald-400 font-medium">Contributing</span>
-                    <div className="w-7 h-4 rounded-full bg-emerald-500 relative">
-                      <div className="absolute right-0.5 top-0.5 w-3 h-3 rounded-full bg-white" />
+                  <button
+                    type="button"
+                    onClick={() => setIsContributing(!isContributing)}
+                    className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full transition-all ${
+                      isContributing
+                        ? 'bg-emerald-500/10 border border-emerald-500/30'
+                        : 'bg-[#252525] border border-white/10'
+                    }`}
+                  >
+                    <Heart className={`w-3.5 h-3.5 ${isContributing ? 'text-emerald-400' : 'text-[#888]'}`} />
+                    <span className={`text-xs font-medium ${isContributing ? 'text-emerald-400' : 'text-[#888]'}`}>
+                      {isContributing ? 'Contributing' : 'Private'}
+                    </span>
+                    <div className={`w-7 h-4 rounded-full relative transition-colors ${
+                      isContributing ? 'bg-emerald-500' : 'bg-[#444]'
+                    }`}>
+                      <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all ${
+                        isContributing ? 'right-0.5' : 'left-0.5'
+                      }`} />
                     </div>
-                  </div>
+                  </button>
 
                   {/* Model Selector */}
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#252525] border border-white/10">
-                    <span className="text-xs text-white font-medium">Zamani Pro</span>
-                    <ChevronDown className="w-3.5 h-3.5 text-[#888]" />
+                  <div className="relative" ref={dropdownRef}>
+                    <button
+                      type="button"
+                      onClick={() => setModelDropdownOpen(!modelDropdownOpen)}
+                      className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#252525] border border-white/10 hover:border-white/20 transition-colors"
+                    >
+                      <span className="text-xs text-white font-medium">{selectedModel}</span>
+                      <ChevronDown className={`w-3.5 h-3.5 text-[#888] transition-transform ${modelDropdownOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {modelDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="absolute top-full right-0 mt-2 w-40 rounded-xl bg-[#1a1a1a] border border-white/10 shadow-xl overflow-hidden z-10"
+                      >
+                        {models.map((model) => (
+                          <button
+                            key={model}
+                            type="button"
+                            onClick={() => {
+                              setSelectedModel(model);
+                              setModelDropdownOpen(false);
+                            }}
+                            className={`w-full px-4 py-2.5 text-left text-sm transition-colors ${
+                              selectedModel === model
+                                ? 'bg-emerald-500/10 text-emerald-400'
+                                : 'text-[#888] hover:text-white hover:bg-[#252525]'
+                            }`}
+                          >
+                            {model}
+                            {selectedModel === model && (
+                              <Check className="w-3 h-3 inline-block ml-2" />
+                            )}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
                   </div>
                 </div>
               </div>
