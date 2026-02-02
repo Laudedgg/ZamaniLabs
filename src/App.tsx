@@ -1,0 +1,752 @@
+import { useState } from 'react';
+import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+
+// Animation variants with proper typing
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const staggerItem: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+};
+
+function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-[#e5e5e5]">
+      {/* Navigation */}
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5"
+      >
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2">
+            <Sparkles className="w-6 h-6 text-white" />
+            <span className="text-xl font-medium tracking-tight text-white">Zamani Labs</span>
+          </a>
+
+          <div className="hidden md:flex items-center gap-8">
+            <a href="/chat" className="text-sm text-[#888] hover:text-white transition-colors">ZamaniChat</a>
+            <a href="/marketplace" className="text-sm text-[#888] hover:text-white transition-colors">Marketplace</a>
+            <a href="/api" className="text-sm text-[#888] hover:text-white transition-colors">API</a>
+            <a href="/pricing" className="text-sm text-[#888] hover:text-white transition-colors">Pricing</a>
+          </div>
+
+          <div className="hidden md:flex items-center gap-3">
+            <a href="/login" className="text-sm text-[#888] hover:text-white transition-colors px-4 py-2">
+              Login
+            </a>
+            <a href="/chat" className="text-sm px-5 py-2.5 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-colors">
+              Try ZamaniChat
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="md:hidden p-2 text-[#888]"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="md:hidden mt-4 pb-4 space-y-4 border-t border-white/10 pt-4"
+          >
+            <a href="/chat" className="block py-2 text-[#888]">ZamaniChat</a>
+            <a href="/marketplace" className="block py-2 text-[#888]">Marketplace</a>
+            <a href="/api" className="block py-2 text-[#888]">API</a>
+            <a href="/pricing" className="block py-2 text-[#888]">Pricing</a>
+            <a href="/chat" className="block text-center py-2.5 rounded-full bg-white text-black font-medium mt-4">
+              Try ZamaniChat
+            </a>
+          </motion.div>
+        )}
+      </motion.nav>
+
+      {/* Hero Section with ZamaniChat Interface */}
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center">
+        <div className="max-w-4xl mx-auto w-full">
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-center mb-10"
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Sparkles className="w-8 h-8 text-emerald-400" />
+              <span className="text-lg text-[#888]">ZamaniChat</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white">
+              The consent layer for AI.
+            </h1>
+          </motion.div>
+
+          {/* Chat Input Interface */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="w-full"
+          >
+            {/* Main Input Container */}
+            <div className="rounded-2xl bg-[#1a1a1a] border border-white/10 p-4 md:p-5">
+              {/* Input Field */}
+              <div className="flex items-center gap-3 mb-4">
+                <input
+                  type="text"
+                  placeholder="Ask ZamaniChat anything..."
+                  className="flex-1 bg-transparent text-white text-lg placeholder:text-[#666] outline-none"
+                  readOnly
+                />
+              </div>
+
+              {/* Bottom Controls */}
+              <div className="flex items-center justify-between">
+                {/* Left Controls */}
+                <div className="flex items-center gap-2">
+                  <button type="button" className="p-2.5 rounded-xl bg-emerald-500 text-white hover:bg-emerald-600 transition-colors">
+                    <Send className="w-4 h-4" />
+                  </button>
+                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
+                    <Sparkles className="w-4 h-4" />
+                  </button>
+                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
+                    <MessageSquare className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Right Controls */}
+                <div className="flex items-center gap-2">
+                  {/* Consent Toggle */}
+                  <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30">
+                    <Heart className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-xs text-emerald-400 font-medium">Contributing</span>
+                    <div className="w-7 h-4 rounded-full bg-emerald-500 relative">
+                      <div className="absolute right-0.5 top-0.5 w-3 h-3 rounded-full bg-white" />
+                    </div>
+                  </div>
+
+                  {/* Model Selector */}
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#252525] border border-white/10">
+                    <span className="text-xs text-white font-medium">Zamani Pro</span>
+                    <ChevronDown className="w-3.5 h-3.5 text-[#888]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Action Chips */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex flex-wrap items-center justify-center gap-3 mt-6"
+            >
+              {[
+                { icon: MessageSquare, label: 'Chat' },
+                { icon: Eye, label: 'Research' },
+                { icon: Sparkles, label: 'Create' },
+                { icon: Check, label: 'Analyze' },
+                { icon: Users, label: 'Collaborate' },
+              ].map((chip) => (
+                <button
+                  key={chip.label}
+                  type="button"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1a1a1a] border border-white/10 text-[#888] hover:text-white hover:border-white/20 transition-colors"
+                >
+                  <chip.icon className="w-4 h-4" />
+                  <span className="text-sm">{chip.label}</span>
+                </button>
+              ))}
+            </motion.div>
+
+            {/* Subtext */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="text-center text-sm text-[#666] mt-6"
+            >
+              Contribute to AI improvement voluntarily. Get transparent attribution and fair compensation.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Two Column Feature Cards - Like Muse's "Bring Your Ideas" / "Export Anywhere" */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {/* Contribute Your Data Card */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-8 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-2xl font-medium text-white mb-3">Contribute Your Data</h3>
+              <p className="text-[#888] mb-8">
+                Toggle contribution mode on and help improve AI while maintaining full control over your data.
+              </p>
+
+              {/* UI Mockup - Consent Toggle Interface */}
+              <div className="rounded-xl bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="p-4 border-b border-white/5 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                    <Shield className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-sm text-white font-medium">Contribution Settings</span>
+                </div>
+                <div className="p-4 space-y-4">
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a1a]">
+                    <div className="flex items-center gap-3">
+                      <Heart className="w-4 h-4 text-emerald-400" />
+                      <span className="text-sm text-white">Contribution Mode</span>
+                    </div>
+                    <div className="w-10 h-5 rounded-full bg-emerald-500 relative">
+                      <div className="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white" />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a1a]">
+                    <span className="text-sm text-[#888]">Session contributions</span>
+                    <span className="text-sm text-white font-medium">24</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a1a]">
+                    <span className="text-sm text-[#888]">Lifetime value earned</span>
+                    <span className="text-sm text-emerald-400 font-medium">$127.50</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Track Everything Card */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-8 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-2xl font-medium text-white mb-3">Track Everything</h3>
+              <p className="text-[#888] mb-8">
+                See exactly what you've shared, when, and how it's being used to improve AI systems.
+              </p>
+
+              {/* UI Mockup - Contribution History */}
+              <div className="rounded-xl bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="p-4 border-b border-white/5 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Eye className="w-4 h-4 text-[#888]" />
+                    <span className="text-sm text-white font-medium">Contribution History</span>
+                  </div>
+                  <span className="text-xs text-[#888]">Today</span>
+                </div>
+                <div className="divide-y divide-white/5">
+                  {[
+                    { id: 'c1', time: '2:34 PM', type: 'Chat', model: 'Zamani Pro', status: 'Verified' },
+                    { id: 'c2', time: '1:15 PM', type: 'Feedback', model: 'GPT-4o', status: 'Pending' },
+                    { id: 'c3', time: '11:42 AM', type: 'Chat', model: 'Claude 3', status: 'Verified' },
+                  ].map((item) => (
+                    <div key={item.id} className="p-3 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs text-[#666] w-16">{item.time}</span>
+                        <span className="text-sm text-white">{item.type}</span>
+                        <span className="text-xs text-[#888]">{item.model}</span>
+                      </div>
+                      <span className={`text-xs px-2 py-0.5 rounded ${item.status === 'Verified' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
+                        {item.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Three Feature Cards - Like Muse's "Creativity on Demand" section */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {/* Explicit Consent Card */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Explicit Consent</h3>
+              <p className="text-sm text-[#888] mb-6">
+                Choose exactly when your conversations contribute to AI improvement. Toggle on or off at any time.
+              </p>
+
+              {/* UI Mockup - Toggle options */}
+              <div className="rounded-xl bg-[#0a0a0a] p-4 space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1.5 rounded-full bg-[#1a1a1a] border border-white/10 text-xs text-white">Always ask</span>
+                  <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-xs text-emerald-400">Auto-contribute</span>
+                  <span className="px-3 py-1.5 rounded-full bg-[#1a1a1a] border border-white/10 text-xs text-white">Never share</span>
+                </div>
+                <div className="pt-3 border-t border-white/5">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-[#1a1a1a]">
+                    <div className="w-8 h-5 rounded-full bg-emerald-500 relative">
+                      <div className="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white" />
+                    </div>
+                    <span className="text-xs text-emerald-400">Contributing</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Multiple AI Models Card */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Powered by Frontier Models</h3>
+              <p className="text-sm text-[#888] mb-6">
+                Choose from the latest models, each integrated with our consent and attribution infrastructure.
+              </p>
+
+              {/* UI Mockup - Model Selector */}
+              <div className="rounded-xl bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="divide-y divide-white/5">
+                  {[
+                    { id: 'zamani', name: 'Zamani Pro', provider: 'Zamani Labs', selected: true },
+                    { id: 'gpt', name: 'GPT-4o', provider: 'OpenAI', selected: false },
+                    { id: 'claude', name: 'Claude 3.5', provider: 'Anthropic', selected: false },
+                    { id: 'gemini', name: 'Gemini Pro', provider: 'Google', selected: false },
+                  ].map((model) => (
+                    <div key={model.id} className={`p-3 flex items-center justify-between ${model.selected ? 'bg-[#1a1a1a]' : ''}`}>
+                      <div>
+                        <p className="text-sm text-white">{model.name}</p>
+                        <p className="text-xs text-[#666]">{model.provider}</p>
+                      </div>
+                      {model.selected && <div className="w-2 h-2 rounded-full bg-emerald-400" />}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Chat with Context Card */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Chat with Attribution</h3>
+              <p className="text-sm text-[#888] mb-6">
+                Get context-aware AI responses while earning transparent credit for your contributions.
+              </p>
+
+              {/* UI Mockup - Chat Interface */}
+              <div className="rounded-xl bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="p-3 space-y-3">
+                  <div className="p-3 rounded-lg bg-[#1a1a1a]">
+                    <p className="text-xs text-white">How can I improve my code review process?</p>
+                  </div>
+                  <div className="text-xs text-[#666]">{">"} Thinking...</div>
+                  <div className="p-3 rounded-lg bg-[#1a1a1a] space-y-2">
+                    <p className="text-xs text-[#888]">Here are three strategies:</p>
+                    <p className="text-xs text-white">1. Use structured checklists</p>
+                    <p className="text-xs text-white">2. Limit review size to 400 LOC</p>
+                    <p className="text-xs text-white">3. Focus on logic, not style</p>
+                  </div>
+                </div>
+                <div className="p-3 border-t border-white/5">
+                  <div className="flex items-center gap-2 text-xs text-[#666]">
+                    <Heart className="w-3 h-3 text-emerald-400" />
+                    <span>+0.02 earned from this exchange</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Deep Understanding Section - Like Muse's split layout */}
+      <section id="how-it-works" className="py-20 md:py-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 gap-16 items-center"
+          >
+            {/* Left - Text Content */}
+            <motion.div variants={fadeInUp}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] text-white mb-6">
+                Deep Consent Understanding
+              </h2>
+              <p className="text-lg text-[#888] leading-relaxed">
+                Zamani Labs tracks every contribution with full transparency,
+                letting you see exactly how your input helps improve AI systems
+                while maintaining complete control over your data. Every interaction
+                is logged, verified, and compensated fairly.
+              </p>
+            </motion.div>
+
+            {/* Right - Complex UI Mockup */}
+            <motion.div variants={fadeInUp} className="space-y-4">
+              {/* Chat Messages UI */}
+              <div className="rounded-xl bg-[#141414] border border-white/10 overflow-hidden">
+                <div className="p-4 border-b border-white/5 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                      <MessageSquare className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-white font-medium">ZamaniChat</p>
+                      <p className="text-xs text-[#666]">Zamani Pro</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="text-xs text-emerald-400">Contributing</span>
+                  </div>
+                </div>
+
+                <div className="p-4 space-y-4">
+                  {/* User message */}
+                  <div className="flex justify-end">
+                    <div className="max-w-[80%] p-3 rounded-lg bg-[#1a1a1a]">
+                      <p className="text-sm text-white">Can you explain how consent tracking works?</p>
+                    </div>
+                  </div>
+
+                  {/* AI thinking */}
+                  <div className="text-xs text-[#666]">{">"} Analyzing consent preferences...</div>
+
+                  {/* AI response */}
+                  <div className="max-w-[90%] p-3 rounded-lg bg-[#0a0a0a] border border-white/5">
+                    <p className="text-sm text-[#ccc] leading-relaxed">
+                      Every message you send while in contributing mode is:
+                    </p>
+                    <ul className="mt-2 space-y-1 text-sm text-white">
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3 h-3 text-emerald-400" />
+                        Logged with a unique attribution ID
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3 h-3 text-emerald-400" />
+                        Tracked for AI training usage
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3 h-3 text-emerald-400" />
+                        Compensated based on value
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Contribution indicator */}
+                <div className="p-3 border-t border-white/5 flex items-center justify-between bg-emerald-500/5">
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-emerald-400" />
+                    <span className="text-xs text-emerald-400">Contribution recorded</span>
+                  </div>
+                  <span className="text-xs text-white font-medium">+$0.03</span>
+                </div>
+              </div>
+
+              {/* Stats Row */}
+              <div className="grid grid-cols-3 gap-3">
+                <div className="p-3 rounded-lg bg-[#141414] border border-white/5 text-center">
+                  <p className="text-lg font-medium text-white">847</p>
+                  <p className="text-xs text-[#666]">Contributions</p>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141414] border border-white/5 text-center">
+                  <p className="text-lg font-medium text-emerald-400">$127.40</p>
+                  <p className="text-xs text-[#666]">Earned</p>
+                </div>
+                <div className="p-3 rounded-lg bg-[#141414] border border-white/5 text-center">
+                  <p className="text-lg font-medium text-white">100%</p>
+                  <p className="text-xs text-[#666]">Verified</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Ecosystem Section - Like Muse's "Explore the Muse ecosystem" */}
+      <section className="py-20 md:py-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
+              Explore the Zamani ecosystem.
+            </h2>
+            <p className="text-lg text-[#888] max-w-2xl mx-auto">
+              Three tools to fit your unique workflow. Try Zamani in your browser,
+              on your desktop, or through our API.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {/* ZamaniChat */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">ZamaniChat</h3>
+              <p className="text-sm text-[#888] mb-4">
+                The AI chat interface with built-in consent controls. Chat with frontier models while maintaining full control.
+              </p>
+              <div className="flex items-center gap-4 mb-6">
+                <a href="/chat" className="text-sm text-white flex items-center gap-1 hover:opacity-80">
+                  Open in browser <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+
+              {/* Product Screenshot Mockup */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="p-2 border-b border-white/5 flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <span className="text-[10px] text-[#666]">ZamaniChat</span>
+                </div>
+                <div className="p-3 h-32 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="w-3/4 h-2 rounded bg-[#1a1a1a]" />
+                    <div className="w-1/2 h-2 rounded bg-[#1a1a1a]" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-8 rounded-lg bg-[#1a1a1a] flex items-center px-3">
+                      <span className="text-[10px] text-[#666]">Message...</span>
+                    </div>
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
+                      <Send className="w-3 h-3 text-white" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Marketplace */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Zamani Marketplace</h3>
+              <p className="text-sm text-[#888] mb-4">
+                Browse contribution opportunities, track your earnings, and connect with AI companies seeking quality data.
+              </p>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-sm text-[#666]">Coming soon</span>
+              </div>
+
+              {/* Product Screenshot Mockup */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="p-2 border-b border-white/5 flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <span className="text-[10px] text-[#666]">Marketplace</span>
+                </div>
+                <div className="p-3 h-32 space-y-2">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
+                    <div className="flex items-center gap-2">
+                      <DollarSign className="w-3 h-3 text-emerald-400" />
+                      <span className="text-[10px] text-white">Earnings</span>
+                    </div>
+                    <span className="text-[10px] text-emerald-400">$127.40</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
+                    <div className="flex items-center gap-2">
+                      <Users className="w-3 h-3 text-[#888]" />
+                      <span className="text-[10px] text-white">Contributors</span>
+                    </div>
+                    <span className="text-[10px] text-[#888]">12.4k</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
+                    <div className="flex items-center gap-2">
+                      <Building className="w-3 h-3 text-[#888]" />
+                      <span className="text-[10px] text-white">Partners</span>
+                    </div>
+                    <span className="text-[10px] text-[#888]">48</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* API */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Zamani API</h3>
+              <p className="text-sm text-[#888] mb-4">
+                Enterprise infrastructure for consent management, attribution tracking, and contributor compensation.
+              </p>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-sm text-[#666]">Coming soon</span>
+              </div>
+
+              {/* Product Screenshot Mockup */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden font-mono">
+                <div className="p-2 border-b border-white/5 flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <span className="text-[10px] text-[#666]">Terminal</span>
+                </div>
+                <div className="p-3 h-32 space-y-1 text-[10px]">
+                  <p><span className="text-[#888]">$</span> <span className="text-emerald-400">curl</span> <span className="text-white">api.zamani.ai/v1/consent</span></p>
+                  <p className="text-[#888]">{"{"}</p>
+                  <p className="text-[#888] pl-2">"status": <span className="text-emerald-400">"active"</span>,</p>
+                  <p className="text-[#888] pl-2">"contributions": <span className="text-white">847</span>,</p>
+                  <p className="text-[#888] pl-2">"earnings": <span className="text-emerald-400">"$127.40"</span></p>
+                  <p className="text-[#888]">{"}"}</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
+            Try ZamaniChat now.
+          </h2>
+          <p className="text-lg text-[#888] mb-10">
+            Free to use. Your choice, always.
+          </p>
+          <a
+            href="/chat"
+            className="inline-flex items-center gap-2 px-8 py-4 text-base font-medium rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+          >
+            Start chatting
+          </a>
+        </motion.div>
+      </section>
+
+      {/* Footer */}
+      <motion.footer
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        className="py-12 px-6 border-t border-white/5"
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div className="col-span-2 md:col-span-1">
+              <div className="flex items-center gap-2 mb-4">
+                <Sparkles className="w-5 h-5 text-white" />
+                <span className="text-lg font-medium text-white">Zamani Labs</span>
+              </div>
+              <p className="text-sm text-[#666] mb-2">Contact</p>
+              <a href="mailto:hello@zamanilabs.com" className="text-sm text-white flex items-center gap-2 hover:opacity-80">
+                hello@zamanilabs.com <Mail className="w-3 h-3" />
+              </a>
+              <p className="mt-6 text-xs text-[#666]">
+                2026 Zamani Labs Inc. All rights reserved.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-medium text-sm text-white mb-4">Product</p>
+              <ul className="space-y-2">
+                <li><a href="/chat" className="text-sm text-[#666] hover:text-white transition-colors">ZamaniChat</a></li>
+                <li><a href="/marketplace" className="text-sm text-[#666] hover:text-white transition-colors">Marketplace</a></li>
+                <li><a href="/api" className="text-sm text-[#666] hover:text-white transition-colors">API</a></li>
+                <li><a href="/pricing" className="text-sm text-[#666] hover:text-white transition-colors">Pricing</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-medium text-sm text-white mb-4">Company</p>
+              <ul className="space-y-2">
+                <li><a href="/blog" className="text-sm text-[#666] hover:text-white transition-colors">Blog</a></li>
+                <li><a href="/about" className="text-sm text-[#666] hover:text-white transition-colors">About</a></li>
+                <li><a href="/terms" className="text-sm text-[#666] hover:text-white transition-colors">Terms</a></li>
+                <li><a href="/privacy" className="text-sm text-[#666] hover:text-white transition-colors">Privacy</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-medium text-sm text-white mb-4">Stay updated</p>
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="flex-1 px-3 py-2 text-sm rounded-l-lg bg-[#1a1a1a] border border-white/10 text-white placeholder:text-[#666] outline-none focus:border-white/20"
+                />
+                <button
+                  type="button"
+                  className="px-4 py-2 text-sm rounded-r-lg bg-white text-black font-medium hover:bg-white/90 transition-colors"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.footer>
+    </div>
+  );
+}
+
+export default App;
