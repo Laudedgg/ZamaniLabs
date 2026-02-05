@@ -34,9 +34,33 @@ function App() {
   const [isContributing, setIsContributing] = useState(true);
   const [selectedModel, setSelectedModel] = useState('Zamani Pro');
   const [modelDropdownOpen, setModelDropdownOpen] = useState(false);
+  const [chatInput, setChatInput] = useState('');
+  const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
+  const [currentPlaceholderIndex, setCurrentPlaceholderIndex] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const models = ['Zamani Pro', 'GPT-4o', 'Claude 3.5', 'Gemini Pro'];
+
+  const placeholderExamples = [
+    "Let's chat about my schedule today",
+    "Generate an image of a sunset over mountains",
+    "Help me write a professional email",
+    "Explain quantum computing in simple terms",
+    "Create a workout plan for beginners",
+    "Summarize this article for me",
+    "Write a poem about artificial intelligence",
+    "Plan a 3-day trip to Tokyo",
+  ];
+
+  // Cycle through placeholder examples
+  useEffect(() => {
+    if (chatInput === '') {
+      const interval = setInterval(() => {
+        setCurrentPlaceholderIndex((prev) => (prev + 1) % placeholderExamples.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [chatInput, placeholderExamples.length]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -54,6 +78,31 @@ function App() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [modelDropdownOpen]);
+
+  const handleSendMessage = () => {
+    if (chatInput.trim()) {
+      setMessages([...messages, { role: 'user', content: chatInput }]);
+      setChatInput('');
+
+      // Simulate AI response after a short delay
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: `This is a demo response from ${selectedModel}. In the full ZamaniChat app, you'll get real AI responses with full consent controls.`,
+          },
+        ]);
+      }, 1000);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#e5e5e5]">
@@ -138,15 +187,39 @@ function App() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="w-full"
           >
+            {/* Messages Display */}
+            {messages.length > 0 && (
+              <div className="mb-4 rounded-2xl bg-[#1a1a1a] border border-white/10 p-4 max-h-64 overflow-y-auto space-y-3">
+                {messages.map((message, index) => (
+                  <div
+                    key={index}
+                    className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div
+                      className={`max-w-[80%] px-4 py-2 rounded-xl ${
+                        message.role === 'user'
+                          ? 'bg-emerald-500 text-black'
+                          : 'bg-[#252525] text-white'
+                      }`}
+                    >
+                      <p className="text-sm">{message.content}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* Main Input Container */}
             <div className="rounded-2xl bg-[#1a1a1a] border border-white/10 p-4 md:p-5">
               {/* Input Field */}
               <div className="flex items-center gap-3 mb-4">
                 <input
                   type="text"
-                  placeholder="Ask ZamaniChat anything..."
-                  className="flex-1 bg-transparent text-white text-lg placeholder:text-[#666] outline-none"
-                  readOnly
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder={placeholderExamples[currentPlaceholderIndex]}
+                  className="flex-1 bg-transparent text-white text-lg placeholder:text-[#666] outline-none transition-all"
                 />
               </div>
 
@@ -154,7 +227,16 @@ function App() {
               <div className="flex items-center justify-between">
                 {/* Left Controls */}
                 <div className="flex items-center gap-2">
-                  <button type="button" className="p-2.5 rounded-xl bg-emerald-500 text-white hover:bg-emerald-600 transition-colors">
+                  <button
+                    type="button"
+                    onClick={handleSendMessage}
+                    disabled={!chatInput.trim()}
+                    className={`p-2.5 rounded-xl transition-colors ${
+                      chatInput.trim()
+                        ? 'bg-emerald-500 text-white hover:bg-emerald-600'
+                        : 'bg-[#252525] text-[#666] cursor-not-allowed'
+                    }`}
+                  >
                     <Send className="w-4 h-4" />
                   </button>
                   <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
