@@ -182,7 +182,7 @@ function App() {
               style={{
                 backgroundImage: `url(${bg})`,
                 backgroundPosition: 'center 40%',
-                filter: 'brightness(0.75) contrast(1.1)',
+                filter: index === 0 ? 'brightness(0.75) contrast(1.1)' : 'brightness(0.95) contrast(1.15)',
                 opacity: currentBgIndex === index ? 1 : 0
               }}
             />
