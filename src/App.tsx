@@ -179,7 +179,7 @@ function App() {
             <div
               key={bg}
               className={`absolute inset-0 bg-cover bg-no-repeat transition-opacity duration-1000 ${
-                index === 0 ? 'scale-110' : 'scale-135'
+                index === 0 ? 'scale-110' : 'scale-135 scale-x-[-1]'
               }`}
               style={{
                 backgroundImage: `url(${bg})`,
