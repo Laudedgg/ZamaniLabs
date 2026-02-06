@@ -169,7 +169,8 @@ function App() {
             className="absolute inset-0 bg-cover bg-no-repeat scale-110"
             style={{
               backgroundImage: 'url(/hero-bg.jpg)',
-              backgroundPosition: 'center 40%'
+              backgroundPosition: 'center 40%',
+              filter: 'brightness(0.75) contrast(1.1)'
             }}
           />
           {/* Lighter gradient overlay for more image visibility */}
