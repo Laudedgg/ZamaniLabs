@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building } from 'lucide-react';
+import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building, Bot } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 
 // Animation variants with proper typing
@@ -411,7 +411,7 @@ function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {/* ZamaniChat */}
             <motion.div
@@ -462,7 +462,7 @@ function App() {
             >
               <h3 className="text-xl font-medium text-white mb-2">Zamani Marketplace</h3>
               <p className="text-sm text-[#888] mb-4">
-                Browse contribution opportunities, track your earnings, and connect with AI companies seeking quality data.
+                Browse contribution opportunities, track your earnings, and connect with AI companies seeking quality data. Includes access to Agent Ryan—your AI assistant for maximizing contribution value.
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-sm text-[#666]">Coming soon</span>
@@ -486,12 +486,12 @@ function App() {
                     </div>
                     <span className="text-[10px] text-emerald-400">$127.40</span>
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
+                  <div className="flex items-center justify-between p-2 rounded bg-emerald-500/10 border border-emerald-500/20">
                     <div className="flex items-center gap-2">
-                      <Users className="w-3 h-3 text-[#888]" />
-                      <span className="text-[10px] text-white">Contributors</span>
+                      <Sparkles className="w-3 h-3 text-emerald-400" />
+                      <span className="text-[10px] text-emerald-400 font-medium">Agent Ryan</span>
                     </div>
-                    <span className="text-[10px] text-[#888]">12.4k</span>
+                    <span className="text-[10px] text-emerald-400">Active</span>
                   </div>
                   <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
                     <div className="flex items-center gap-2">
