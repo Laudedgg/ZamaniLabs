@@ -411,7 +411,7 @@ function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid md:grid-cols-3 gap-6"
           >
             {/* ZamaniChat */}
             <motion.div
