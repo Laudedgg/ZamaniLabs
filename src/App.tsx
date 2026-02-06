@@ -166,13 +166,16 @@ function App() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: 'url(/hero-bg.jpg)' }}
+            className="absolute inset-0 bg-cover bg-no-repeat scale-110"
+            style={{
+              backgroundImage: 'url(/hero-bg.jpg)',
+              backgroundPosition: 'center 40%'
+            }}
           />
-          {/* Dark gradient overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/95 via-[#0a0a0a]/90 to-[#0a0a0a]/95" />
-          {/* Additional radial gradient for focus */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0a_100%)]" />
+          {/* Lighter gradient overlay for more image visibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/60 to-[#0a0a0a]/80" />
+          {/* Subtle radial gradient for focus */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#0a0a0a_90%)]" />
         </div>
 
         <div className="max-w-4xl mx-auto w-full relative z-10">
