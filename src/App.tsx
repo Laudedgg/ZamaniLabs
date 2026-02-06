@@ -401,7 +401,8 @@ function App() {
               Explore the Zamani ecosystem.
             </h2>
             <p className="text-lg text-[#888] max-w-2xl mx-auto">
-              Four tools to fit your unique workflow. Chat, earn, manage your wallet, and integrate via API.
+              Three tools to fit your unique workflow. Try Zamani in your browser,
+              on your desktop, or through our API.
             </p>
           </motion.div>
 
@@ -410,7 +411,7 @@ function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid md:grid-cols-3 gap-6"
           >
             {/* ZamaniChat */}
             <motion.div
@@ -536,55 +537,6 @@ function App() {
                 </div>
               </div>
             </motion.div>
-
-            {/* Wallet */}
-            <motion.div
-              variants={staggerItem}
-              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
-            >
-              <h3 className="text-xl font-medium text-white mb-2">Zamani Wallet</h3>
-              <p className="text-sm text-[#888] mb-4">
-                Every user gets a built-in wallet to receive earnings from contributions and marketplace activities. Supports USDC and Zamani tokens.
-              </p>
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-sm text-[#666]">Coming soon</span>
-              </div>
-
-              {/* Product Screenshot Mockup */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden">
-                <div className="p-2 border-b border-white/5 flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
-                  </div>
-                  <span className="text-[10px] text-[#666]">Wallet</span>
-                </div>
-                <div className="p-3 h-32 space-y-2">
-                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
-                    <div className="flex items-center gap-2">
-                      <DollarSign className="w-3 h-3 text-emerald-400" />
-                      <span className="text-[10px] text-white">USDC Balance</span>
-                    </div>
-                    <span className="text-[10px] text-emerald-400">$127.40</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-emerald-500/10 border border-emerald-500/20">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-3 h-3 text-emerald-400" />
-                      <span className="text-[10px] text-emerald-400 font-medium">Zamani Tokens</span>
-                    </div>
-                    <span className="text-[10px] text-emerald-400">Coming Soon</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
-                    <div className="flex items-center gap-2">
-                      <ArrowRight className="w-3 h-3 text-[#888]" />
-                      <span className="text-[10px] text-white">Total Earned</span>
-                    </div>
-                    <span className="text-[10px] text-[#888]">$1,247.80</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -644,37 +596,42 @@ function App() {
               variants={staggerItem}
               className="rounded-2xl p-8 bg-[#141414] border border-white/5"
             >
-              <h3 className="text-2xl font-medium text-white mb-3">Track Everything</h3>
+              <h3 className="text-2xl font-medium text-white mb-3">Your Built-in Wallet</h3>
               <p className="text-[#888] mb-8">
-                See exactly what you've shared, when, and how it's being used to improve AI systems.
+                Every user gets a wallet to receive earnings from contributions and marketplace activities. Track your USDC balance and upcoming Zamani tokens.
               </p>
 
-              {/* UI Mockup - Contribution History */}
+              {/* UI Mockup - Wallet */}
               <div className="rounded-xl bg-[#0a0a0a] border border-white/10 overflow-hidden">
                 <div className="p-4 border-b border-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Eye className="w-4 h-4 text-[#888]" />
-                    <span className="text-sm text-white font-medium">Contribution History</span>
+                    <DollarSign className="w-4 h-4 text-emerald-400" />
+                    <span className="text-sm text-white font-medium">Zamani Wallet</span>
                   </div>
-                  <span className="text-xs text-[#888]">Today</span>
+                  <span className="text-xs text-emerald-400">Active</span>
                 </div>
-                <div className="divide-y divide-white/5">
-                  {[
-                    { id: 'c1', time: '2:34 PM', type: 'Chat', model: 'Zamani Pro', status: 'Verified' },
-                    { id: 'c2', time: '1:15 PM', type: 'Feedback', model: 'GPT-4o', status: 'Pending' },
-                    { id: 'c3', time: '11:42 AM', type: 'Chat', model: 'Claude 3', status: 'Verified' },
-                  ].map((item) => (
-                    <div key={item.id} className="p-3 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs text-[#666] w-16">{item.time}</span>
-                        <span className="text-sm text-white">{item.type}</span>
-                        <span className="text-xs text-[#888]">{item.model}</span>
-                      </div>
-                      <span className={`text-xs px-2 py-0.5 rounded ${item.status === 'Verified' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
-                        {item.status}
-                      </span>
+                <div className="p-4 space-y-3">
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a1a]">
+                    <div className="flex items-center gap-3">
+                      <DollarSign className="w-4 h-4 text-emerald-400" />
+                      <span className="text-sm text-white">USDC Balance</span>
                     </div>
-                  ))}
+                    <span className="text-sm text-emerald-400 font-medium">$127.40</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                    <div className="flex items-center gap-3">
+                      <Sparkles className="w-4 h-4 text-emerald-400" />
+                      <span className="text-sm text-emerald-400 font-medium">Zamani Tokens</span>
+                    </div>
+                    <span className="text-sm text-emerald-400">Coming Soon</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a1a]">
+                    <div className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-[#888]" />
+                      <span className="text-sm text-white">Total Earned</span>
+                    </div>
+                    <span className="text-sm text-[#888] font-medium">$1,247.80</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
