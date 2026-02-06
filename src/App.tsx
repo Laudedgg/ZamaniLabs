@@ -462,7 +462,7 @@ function App() {
             >
               <h3 className="text-xl font-medium text-white mb-2">Zamani Marketplace</h3>
               <p className="text-sm text-[#888] mb-4">
-                Browse contribution opportunities, track your earnings, and connect with AI companies seeking quality data. Includes access to Agent Ryan—your AI assistant for maximizing contribution value.
+                Track earnings, connect with AI companies, and maximize your contribution value with Agent Ryan—your personal AI assistant.
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-sm text-[#666]">Coming soon</span>
