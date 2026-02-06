@@ -387,6 +387,160 @@ function App() {
         </div>
       </section>
 
+      {/* Ecosystem Section - Explore the Zamani ecosystem */}
+      <section className="py-20 md:py-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
+              Explore the Zamani ecosystem.
+            </h2>
+            <p className="text-lg text-[#888] max-w-2xl mx-auto">
+              Three tools to fit your unique workflow. Try Zamani in your browser,
+              on your desktop, or through our API.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {/* ZamaniChat */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">ZamaniChat</h3>
+              <p className="text-sm text-[#888] mb-4">
+                The AI chat interface with built-in consent controls. Chat with frontier models while maintaining full control.
+              </p>
+              <div className="flex items-center gap-4 mb-6">
+                <a href="/chat" className="text-sm text-white flex items-center gap-1 hover:opacity-80">
+                  Open in browser <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+
+              {/* Product Screenshot Mockup */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="p-2 border-b border-white/5 flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <span className="text-[10px] text-[#666]">ZamaniChat</span>
+                </div>
+                <div className="p-3 h-32 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="w-3/4 h-2 rounded bg-[#1a1a1a]" />
+                    <div className="w-1/2 h-2 rounded bg-[#1a1a1a]" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-8 rounded-lg bg-[#1a1a1a] flex items-center px-3">
+                      <span className="text-[10px] text-[#666]">Message...</span>
+                    </div>
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
+                      <Send className="w-3 h-3 text-white" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Marketplace */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Zamani Marketplace</h3>
+              <p className="text-sm text-[#888] mb-4">
+                Browse contribution opportunities, track your earnings, and connect with AI companies seeking quality data.
+              </p>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-sm text-[#666]">Coming soon</span>
+              </div>
+
+              {/* Product Screenshot Mockup */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden">
+                <div className="p-2 border-b border-white/5 flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <span className="text-[10px] text-[#666]">Marketplace</span>
+                </div>
+                <div className="p-3 h-32 space-y-2">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
+                    <div className="flex items-center gap-2">
+                      <DollarSign className="w-3 h-3 text-emerald-400" />
+                      <span className="text-[10px] text-white">Earnings</span>
+                    </div>
+                    <span className="text-[10px] text-emerald-400">$127.40</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
+                    <div className="flex items-center gap-2">
+                      <Users className="w-3 h-3 text-[#888]" />
+                      <span className="text-[10px] text-white">Contributors</span>
+                    </div>
+                    <span className="text-[10px] text-[#888]">12.4k</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
+                    <div className="flex items-center gap-2">
+                      <Building className="w-3 h-3 text-[#888]" />
+                      <span className="text-[10px] text-white">Partners</span>
+                    </div>
+                    <span className="text-[10px] text-[#888]">48</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* API */}
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Zamani API</h3>
+              <p className="text-sm text-[#888] mb-4">
+                Enterprise infrastructure for consent management, attribution tracking, and contributor compensation.
+              </p>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-sm text-[#666]">Coming soon</span>
+              </div>
+
+              {/* Product Screenshot Mockup */}
+              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden font-mono">
+                <div className="p-2 border-b border-white/5 flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <span className="text-[10px] text-[#666]">Terminal</span>
+                </div>
+                <div className="p-3 h-32 space-y-1 text-[10px]">
+                  <p><span className="text-[#888]">$</span> <span className="text-emerald-400">curl</span> <span className="text-white">api.zamani.ai/v1/consent</span></p>
+                  <p className="text-[#888]">{"{"}</p>
+                  <p className="text-[#888] pl-2">"status": <span className="text-emerald-400">"active"</span>,</p>
+                  <p className="text-[#888] pl-2">"contributions": <span className="text-white">847</span>,</p>
+                  <p className="text-[#888] pl-2">"earnings": <span className="text-emerald-400">"$127.40"</span></p>
+                  <p className="text-[#888]">{"}"}</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Two Column Feature Cards - Like Muse's "Bring Your Ideas" / "Export Anywhere" */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
@@ -684,160 +838,6 @@ function App() {
                 <div className="p-3 rounded-lg bg-[#141414] border border-white/5 text-center">
                   <p className="text-lg font-medium text-white">100%</p>
                   <p className="text-xs text-[#666]">Verified</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Ecosystem Section - Like Muse's "Explore the Muse ecosystem" */}
-      <section className="py-20 md:py-32 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
-              Explore the Zamani ecosystem.
-            </h2>
-            <p className="text-lg text-[#888] max-w-2xl mx-auto">
-              Three tools to fit your unique workflow. Try Zamani in your browser,
-              on your desktop, or through our API.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6"
-          >
-            {/* ZamaniChat */}
-            <motion.div
-              variants={staggerItem}
-              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
-            >
-              <h3 className="text-xl font-medium text-white mb-2">ZamaniChat</h3>
-              <p className="text-sm text-[#888] mb-4">
-                The AI chat interface with built-in consent controls. Chat with frontier models while maintaining full control.
-              </p>
-              <div className="flex items-center gap-4 mb-6">
-                <a href="/chat" className="text-sm text-white flex items-center gap-1 hover:opacity-80">
-                  Open in browser <ArrowRight className="w-3 h-3" />
-                </a>
-              </div>
-
-              {/* Product Screenshot Mockup */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden">
-                <div className="p-2 border-b border-white/5 flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
-                  </div>
-                  <span className="text-[10px] text-[#666]">ZamaniChat</span>
-                </div>
-                <div className="p-3 h-32 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <div className="w-3/4 h-2 rounded bg-[#1a1a1a]" />
-                    <div className="w-1/2 h-2 rounded bg-[#1a1a1a]" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 h-8 rounded-lg bg-[#1a1a1a] flex items-center px-3">
-                      <span className="text-[10px] text-[#666]">Message...</span>
-                    </div>
-                    <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
-                      <Send className="w-3 h-3 text-white" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Marketplace */}
-            <motion.div
-              variants={staggerItem}
-              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
-            >
-              <h3 className="text-xl font-medium text-white mb-2">Zamani Marketplace</h3>
-              <p className="text-sm text-[#888] mb-4">
-                Browse contribution opportunities, track your earnings, and connect with AI companies seeking quality data.
-              </p>
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-sm text-[#666]">Coming soon</span>
-              </div>
-
-              {/* Product Screenshot Mockup */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden">
-                <div className="p-2 border-b border-white/5 flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
-                  </div>
-                  <span className="text-[10px] text-[#666]">Marketplace</span>
-                </div>
-                <div className="p-3 h-32 space-y-2">
-                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
-                    <div className="flex items-center gap-2">
-                      <DollarSign className="w-3 h-3 text-emerald-400" />
-                      <span className="text-[10px] text-white">Earnings</span>
-                    </div>
-                    <span className="text-[10px] text-emerald-400">$127.40</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
-                    <div className="flex items-center gap-2">
-                      <Users className="w-3 h-3 text-[#888]" />
-                      <span className="text-[10px] text-white">Contributors</span>
-                    </div>
-                    <span className="text-[10px] text-[#888]">12.4k</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#1a1a1a]">
-                    <div className="flex items-center gap-2">
-                      <Building className="w-3 h-3 text-[#888]" />
-                      <span className="text-[10px] text-white">Partners</span>
-                    </div>
-                    <span className="text-[10px] text-[#888]">48</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* API */}
-            <motion.div
-              variants={staggerItem}
-              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
-            >
-              <h3 className="text-xl font-medium text-white mb-2">Zamani API</h3>
-              <p className="text-sm text-[#888] mb-4">
-                Enterprise infrastructure for consent management, attribution tracking, and contributor compensation.
-              </p>
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-sm text-[#666]">Coming soon</span>
-              </div>
-
-              {/* Product Screenshot Mockup */}
-              <div className="rounded-lg bg-[#0a0a0a] border border-white/10 overflow-hidden font-mono">
-                <div className="p-2 border-b border-white/5 flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                    <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
-                    <div className="w-2 h-2 rounded-full bg-[#28c840]" />
-                  </div>
-                  <span className="text-[10px] text-[#666]">Terminal</span>
-                </div>
-                <div className="p-3 h-32 space-y-1 text-[10px]">
-                  <p><span className="text-[#888]">$</span> <span className="text-emerald-400">curl</span> <span className="text-white">api.zamani.ai/v1/consent</span></p>
-                  <p className="text-[#888]">{"{"}</p>
-                  <p className="text-[#888] pl-2">"status": <span className="text-emerald-400">"active"</span>,</p>
-                  <p className="text-[#888] pl-2">"contributions": <span className="text-white">847</span>,</p>
-                  <p className="text-[#888] pl-2">"earnings": <span className="text-emerald-400">"$127.40"</span></p>
-                  <p className="text-[#888]">{"}"}</p>
                 </div>
               </div>
             </motion.div>
