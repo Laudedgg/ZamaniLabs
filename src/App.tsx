@@ -179,12 +179,12 @@ function App() {
             <div
               key={bg}
               className={`absolute inset-0 bg-cover bg-no-repeat transition-opacity duration-1000 ${
-                index === 0 ? 'scale-110' : 'scale-125'
+                index === 0 ? 'scale-110' : 'scale-150'
               }`}
               style={{
                 backgroundImage: `url(${bg})`,
-                backgroundPosition: index === 0 ? 'center 40%' : 'center 35%',
-                filter: index === 0 ? 'brightness(0.75) contrast(1.1)' : 'brightness(0.75) contrast(1.2)',
+                backgroundPosition: index === 0 ? 'center 40%' : 'center 30%',
+                filter: index === 0 ? 'brightness(0.75) contrast(1.1)' : 'brightness(0.75) contrast(1.3)',
                 opacity: currentBgIndex === index ? 1 : 0
               }}
             />
