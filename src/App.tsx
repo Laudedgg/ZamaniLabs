@@ -162,8 +162,20 @@ function App() {
       </motion.nav>
 
       {/* Hero Section with ZamaniChat Interface */}
-      <section className="pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center">
-        <div className="max-w-4xl mx-auto w-full">
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: 'url(/hero-bg.jpg)' }}
+          />
+          {/* Dark gradient overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/95 via-[#0a0a0a]/90 to-[#0a0a0a]/95" />
+          {/* Additional radial gradient for focus */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0a_100%)]" />
+        </div>
+
+        <div className="max-w-4xl mx-auto w-full relative z-10">
           {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
