@@ -37,9 +37,11 @@ function App() {
   const [chatInput, setChatInput] = useState('');
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
   const [currentPlaceholderIndex, setCurrentPlaceholderIndex] = useState(0);
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const models = ['Zamani Pro', 'GPT-4o', 'Claude 3.5', 'Gemini Pro'];
+  const backgroundImages = ['/hero-bg.jpg', '/hero-bg-2.jpg'];
 
   const placeholderExamples = [
     "Let's chat about my schedule today",
@@ -61,6 +63,14 @@ function App() {
       return () => clearInterval(interval);
     }
   }, [chatInput, placeholderExamples.length]);
+
+  // Cycle through background images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 6000); // Change every 6 seconds
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -163,16 +173,20 @@ function App() {
 
       {/* Hero Section with ZamaniChat Interface */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
+        {/* Background Images with Crossfade */}
         <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-cover bg-no-repeat scale-110"
-            style={{
-              backgroundImage: 'url(/hero-bg.jpg)',
-              backgroundPosition: 'center 40%',
-              filter: 'brightness(0.75) contrast(1.1)'
-            }}
-          />
+          {backgroundImages.map((bg, index) => (
+            <div
+              key={bg}
+              className="absolute inset-0 bg-cover bg-no-repeat scale-110 transition-opacity duration-1000"
+              style={{
+                backgroundImage: `url(${bg})`,
+                backgroundPosition: 'center 40%',
+                filter: 'brightness(0.75) contrast(1.1)',
+                opacity: currentBgIndex === index ? 1 : 0
+              }}
+            />
+          ))}
           {/* Lighter gradient overlay for more image visibility */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/60 to-[#0a0a0a]/80" />
           {/* Subtle radial gradient for focus */}
