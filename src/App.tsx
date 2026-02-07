@@ -207,9 +207,13 @@ function App() {
               <Sparkles className="w-8 h-8 text-emerald-400" />
               <span className="text-lg text-[#888]">ZamaniChat</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white">
-              The consent layer for AI.
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white mb-6">
+              AI will meet you where you are,<br />at all times.
             </h1>
+            <p className="text-lg md:text-xl text-[#888] max-w-3xl mx-auto">
+              ChatGPT? Gemini? Veo? Sora?<br />
+              <span className="text-white font-medium">No, it's Zamani. It's everything.</span>
+            </p>
           </motion.div>
 
           {/* Chat Input Interface */}
@@ -539,6 +543,48 @@ function App() {
             </motion.div>
           </motion.div>
         </div>
+      </section>
+
+      {/* Meaning of Zamani Section */}
+      <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span className="text-sm text-emerald-400 font-medium">The Meaning of Zamani</span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 leading-[1.1]">
+            A name rooted in culture.
+          </h2>
+
+          <p className="text-lg md:text-xl text-[#888] leading-relaxed mb-8">
+            <span className="text-white font-medium">Zamani</span> is a beautiful fusion of languages—
+            drawing from <span className="text-emerald-400">Arabic</span>, <span className="text-emerald-400">Swahili</span>,
+            and <span className="text-emerald-400">Hausa</span>. It represents time, heritage, and the collective wisdom
+            that connects us all.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="p-6 rounded-xl bg-[#141414] border border-white/5">
+              <h3 className="text-xl font-medium text-white mb-2">Arabic</h3>
+              <p className="text-sm text-[#888]">زمان (Zaman) - Time, era, epoch</p>
+            </div>
+            <div className="p-6 rounded-xl bg-[#141414] border border-white/5">
+              <h3 className="text-xl font-medium text-white mb-2">Swahili</h3>
+              <p className="text-sm text-[#888]">Zamani - The distant past, heritage</p>
+            </div>
+            <div className="p-6 rounded-xl bg-[#141414] border border-white/5">
+              <h3 className="text-xl font-medium text-white mb-2">Hausa</h3>
+              <p className="text-sm text-[#888]">Zamani - Ancient times, tradition</p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Two Column Feature Cards - Like Muse's "Bring Your Ideas" / "Export Anywhere" */}
