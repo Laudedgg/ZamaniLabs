@@ -919,15 +919,16 @@ function App() {
         </div>
       </section>
 
-      {/* Zamani Token Section */}
-      <section className="py-20 md:py-32 px-6">
+      {/* Zamani Token & Meaning Section */}
+      <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
         <div className="max-w-6xl mx-auto">
+          {/* Zamani Token */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center"
+            className="text-center mb-20"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
               <Sparkles className="w-4 h-4 text-emerald-400" />
@@ -944,12 +945,8 @@ function App() {
               Coming soon.
             </p>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Meaning of Zamani Section */}
-      <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
-        <div className="max-w-6xl mx-auto">
+          {/* Meaning of Zamani */}
           <motion.div
             initial="hidden"
             whileInView="visible"
