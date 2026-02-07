@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building, Bot } from 'lucide-react';
+import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building, Bot, Home, ShoppingBag } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 
 // Animation variants with proper typing
@@ -115,7 +115,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#e5e5e5]">
+    <div className="min-h-screen bg-[#0a0a0a] text-[#e5e5e5] pb-20 md:pb-0">
       {/* Navigation */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
@@ -160,9 +160,13 @@ function App() {
             animate={{ opacity: 1, height: 'auto' }}
             className="md:hidden mt-4 pb-4 space-y-4 border-t border-white/10 pt-4"
           >
-            <a href="/" className="block py-2 text-[#888] hover:text-white transition-colors">Home</a>
-            <a href="/marketplace" className="block py-2 text-[#888] hover:text-white transition-colors">Marketplace</a>
-            <a href="/chat" className="block py-2 text-[#888] hover:text-white transition-colors">Zamani Chat</a>
+            <a href="/chat" className="block py-2 text-[#888]">ZamaniChat</a>
+            <a href="/marketplace" className="block py-2 text-[#888]">Marketplace</a>
+            <a href="/api" className="block py-2 text-[#888]">API</a>
+            <a href="/pricing" className="block py-2 text-[#888]">Pricing</a>
+            <a href="/chat" className="block text-center py-2.5 rounded-full bg-white text-black font-medium mt-4">
+              Try ZamaniChat
+            </a>
           </motion.div>
         )}
       </motion.nav>
@@ -1235,6 +1239,24 @@ function App() {
           </div>
         </div>
       </motion.footer>
+
+      {/* PWA Bottom Navigation - Mobile Only */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-t border-white/10">
+        <div className="flex items-center justify-around px-4 py-3">
+          <a href="/" className="flex flex-col items-center gap-1 text-[#888] hover:text-white transition-colors">
+            <Home className="w-5 h-5" />
+            <span className="text-xs">Home</span>
+          </a>
+          <a href="/marketplace" className="flex flex-col items-center gap-1 text-[#888] hover:text-white transition-colors">
+            <ShoppingBag className="w-5 h-5" />
+            <span className="text-xs">Marketplace</span>
+          </a>
+          <a href="/chat" className="flex flex-col items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors">
+            <MessageSquare className="w-5 h-5" />
+            <span className="text-xs">Zamani Chat</span>
+          </a>
+        </div>
+      </nav>
     </div>
   );
 }
