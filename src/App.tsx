@@ -463,11 +463,11 @@ function App() {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
-              Explore the Zamani ecosystem.
+              Four layers. One platform.
             </h2>
             <p className="text-lg text-[#888] max-w-2xl mx-auto">
-              Three tools to fit your unique workflow. Try Zamani in your browser,
-              on your desktop, or through our API.
+              Interface, contribution, distribution, and infrastructure—Zamani is the complete stack
+              for consented human-AI interaction data.
             </p>
           </motion.div>
 
@@ -485,7 +485,7 @@ function App() {
             >
               <h3 className="text-xl font-medium text-white mb-2">ZamaniChat</h3>
               <p className="text-sm text-[#888] mb-4">
-                The AI chat interface with built-in consent controls. Chat with frontier models while maintaining full control.
+                <span className="text-emerald-400 font-medium">Interface layer.</span> The AI chat interface where users interact naturally with frontier models while maintaining full consent control.
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <a href="/chat" className="text-sm text-white flex items-center gap-1 hover:opacity-80">
@@ -527,7 +527,7 @@ function App() {
             >
               <h3 className="text-xl font-medium text-white mb-2">Zamani Marketplace</h3>
               <p className="text-sm text-[#888] mb-4">
-                Track earnings, connect with AI companies, and maximize your contribution value with Agent Ryan—your personal AI assistant.
+                <span className="text-emerald-400 font-medium">Distribution layer.</span> Connect contributors with AI companies. Track earnings and maximize value with Agent Ryan—your personal AI assistant.
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-sm text-[#666]">Coming soon</span>
@@ -576,7 +576,7 @@ function App() {
             >
               <h3 className="text-xl font-medium text-white mb-2">Zamani API</h3>
               <p className="text-sm text-[#888] mb-4">
-                Enterprise infrastructure for consent management, attribution tracking, and contributor compensation.
+                <span className="text-emerald-400 font-medium">Infrastructure layer.</span> Enterprise access to consented, structured human-AI interaction data at scale for RLHF and model improvement.
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-sm text-[#666]">Coming soon</span>
@@ -822,13 +822,17 @@ function App() {
             {/* Left - Text Content */}
             <motion.div variants={fadeInUp}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] text-white mb-6">
-                Deep Consent Understanding
+                The infrastructure for RLHF.
               </h2>
-              <p className="text-lg text-[#888] leading-relaxed">
-                Zamani Labs tracks every contribution with full transparency,
-                letting you see exactly how your input helps improve AI systems
-                while maintaining complete control over your data. Every interaction
-                is logged, verified, and compensated fairly.
+              <p className="text-lg text-[#888] leading-relaxed mb-6">
+                Reinforcement Learning from Human Feedback requires humans interacting naturally with models,
+                correcting outputs, and choosing better answers. Today this happens in closed platforms with
+                paid contractors and non-transparent pipelines.
+              </p>
+              <p className="text-lg text-white leading-relaxed">
+                Zamani provides consented, structured human-AI interaction data at scale—with voluntary
+                participation, built-in consent, and transparent compensation. We're not competing with AI
+                companies. We're upstream from all of them.
               </p>
             </motion.div>
 
