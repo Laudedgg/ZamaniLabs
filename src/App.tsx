@@ -183,20 +183,19 @@ function App() {
       </motion.nav>
 
       {/* Hero Section with ZamaniChat Interface */}
-      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center overflow-x-hidden overflow-y-visible">
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center overflow-hidden">
         {/* Background Images with Crossfade */}
         <div className="absolute inset-0 z-0">
           {backgroundImages.map((bg, index) => (
             <div
               key={bg}
-              className={`absolute inset-0 bg-cover bg-no-repeat transition-opacity duration-1000 ${
-                index === 0 ? 'scale-110' : 'scale-135 scale-x-[-1]'
-              }`}
+              className="absolute inset-0 bg-cover bg-no-repeat transition-opacity duration-1000"
               style={{
                 backgroundImage: `url(${bg})`,
                 backgroundPosition: index === 0 ? 'center 40%' : 'center 33%',
                 filter: index === 0 ? 'brightness(0.75) contrast(1.1)' : 'brightness(0.75) contrast(1.3)',
-                opacity: currentBgIndex === index ? 1 : 0
+                opacity: currentBgIndex === index ? 1 : 0,
+                transform: index === 0 ? 'scale(1.1)' : 'scale(1.35) scaleX(-1)'
               }}
             />
           ))}
@@ -329,33 +328,37 @@ function App() {
                       <ChevronDown className={`w-3.5 h-3.5 text-[#888] transition-transform ${modelDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
 
-                    {/* Dropdown Menu */}
+                    {/* Dropdown Menu - Opens Upward */}
                     {modelDropdownOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute top-full right-0 mt-2 w-52 rounded-xl bg-[#1a1a1a] border border-white/10 shadow-xl max-h-80 overflow-y-auto z-50"
+                        transition={{ duration: 0.15 }}
+                        className="absolute bottom-full right-0 mb-2 w-56 rounded-2xl bg-[#1a1a1a] border border-white/10 shadow-2xl py-2 z-50"
                       >
-                        {models.map((model) => (
-                          <button
-                            key={model}
-                            type="button"
-                            onClick={() => {
-                              setSelectedModel(model);
-                              setModelDropdownOpen(false);
-                            }}
-                            className={`w-full px-4 py-2.5 text-left text-sm transition-colors ${
-                              selectedModel === model
-                                ? 'bg-emerald-500/10 text-emerald-400'
-                                : 'text-[#888] hover:text-white hover:bg-[#252525]'
-                            }`}
-                          >
-                            {model}
-                            {selectedModel === model && (
-                              <Check className="w-3 h-3 inline-block ml-2" />
-                            )}
-                          </button>
-                        ))}
+                        <p className="px-4 py-2 text-xs text-[#666] border-b border-white/5 mb-1">Choose a model</p>
+                        <div className="max-h-72 overflow-y-auto">
+                          {models.map((model) => (
+                            <button
+                              key={model}
+                              type="button"
+                              onClick={() => {
+                                setSelectedModel(model);
+                                setModelDropdownOpen(false);
+                              }}
+                              className={`w-full px-4 py-3 text-left text-sm flex items-center justify-between transition-colors ${
+                                selectedModel === model
+                                  ? 'bg-emerald-500/10 text-emerald-400'
+                                  : 'text-[#ccc] hover:text-white hover:bg-white/5'
+                              }`}
+                            >
+                              <span>{model}</span>
+                              {selectedModel === model && (
+                                <Check className="w-3.5 h-3.5 flex-shrink-0" />
+                              )}
+                            </button>
+                          ))}
+                        </div>
                       </motion.div>
                     )}
                   </div>
