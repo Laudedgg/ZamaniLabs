@@ -38,6 +38,7 @@ function App() {
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
   const [currentPlaceholderIndex, setCurrentPlaceholderIndex] = useState(0);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [activePage, setActivePage] = useState(window.location.pathname);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const models = ['Zamani Pro', 'GPT-4o', 'Claude 3.5', 'Gemini Pro'];
@@ -1243,15 +1244,33 @@ function App() {
       {/* PWA Bottom Navigation - Mobile Only */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-t border-white/10">
         <div className="flex items-center justify-around px-4 py-3">
-          <a href="/" className="flex flex-col items-center gap-1 text-[#888] hover:text-white transition-colors">
+          <a
+            href="/"
+            onClick={() => setActivePage('/')}
+            className={`flex flex-col items-center gap-1 transition-colors ${
+              activePage === '/' ? 'text-emerald-400' : 'text-[#888] hover:text-white'
+            }`}
+          >
             <Home className="w-5 h-5" />
             <span className="text-xs">Home</span>
           </a>
-          <a href="/marketplace" className="flex flex-col items-center gap-1 text-[#888] hover:text-white transition-colors">
+          <a
+            href="/marketplace"
+            onClick={() => setActivePage('/marketplace')}
+            className={`flex flex-col items-center gap-1 transition-colors ${
+              activePage === '/marketplace' ? 'text-emerald-400' : 'text-[#888] hover:text-white'
+            }`}
+          >
             <ShoppingBag className="w-5 h-5" />
             <span className="text-xs">Marketplace</span>
           </a>
-          <a href="/chat" className="flex flex-col items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors">
+          <a
+            href="/chat"
+            onClick={() => setActivePage('/chat')}
+            className={`flex flex-col items-center gap-1 transition-colors ${
+              activePage === '/chat' ? 'text-emerald-400' : 'text-[#888] hover:text-white'
+            }`}
+          >
             <MessageSquare className="w-5 h-5" />
             <span className="text-xs">Zamani Chat</span>
           </a>
