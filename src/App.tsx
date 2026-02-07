@@ -87,37 +87,46 @@ function App() {
     return () => clearInterval(interval);
   }, [backgroundImages.length]);
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside or scrolling
   useEffect(() => {
+    if (!modelDropdownOpen) return;
+
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
-      const clickedInsideButton = dropdownRef.current?.contains(target);
-      const clickedInsidePortal = portalDropdownRef.current?.contains(target);
-      if (!clickedInsideButton && !clickedInsidePortal) {
-        setModelDropdownOpen(false);
-      }
+      // If clicked inside the portal dropdown, let the dropdown button handlers deal with it
+      if (portalDropdownRef.current?.contains(target)) return;
+      // If clicked inside the model selector button, let openModelDropdown handle toggle
+      if (dropdownRef.current?.contains(target)) return;
+      // Clicked outside both — close
+      setModelDropdownOpen(false);
     };
 
-    if (modelDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+    const handleScroll = () => {
+      setModelDropdownOpen(false);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll, true); // capture phase to catch all scrolls
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll, true);
     };
   }, [modelDropdownOpen]);
 
-  // Calculate dropdown position when opening
+  // Toggle model dropdown and calculate position
   const openModelDropdown = useCallback(() => {
-    if (!modelDropdownOpen && modelBtnRef.current) {
-      const rect = modelBtnRef.current.getBoundingClientRect();
-      setDropdownPos({
-        top: rect.top,
-        right: window.innerWidth - rect.right,
-      });
-    }
-    setModelDropdownOpen(!modelDropdownOpen);
-  }, [modelDropdownOpen]);
+    setModelDropdownOpen(prev => {
+      if (!prev && modelBtnRef.current) {
+        const rect = modelBtnRef.current.getBoundingClientRect();
+        setDropdownPos({
+          top: rect.top,
+          right: window.innerWidth - rect.right,
+        });
+      }
+      return !prev;
+    });
+  }, []);
 
   const handleSendMessage = () => {
     if (chatInput.trim()) {
