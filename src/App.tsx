@@ -544,23 +544,65 @@ function App() {
       {/* AI Meets You Where You Are Section */}
       <section className="py-20 md:py-32 px-6">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
-              AI will meet you where you are,<br />where you are at all times.
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6 leading-[1.1]">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="inline-block"
+              >
+                AI will meet you
+              </motion.span>{' '}
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="inline-block text-emerald-400"
+              >
+                where you are,
+              </motion.span>
+              <br />
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="inline-block"
+              >
+                where you are
+              </motion.span>{' '}
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="inline-block text-emerald-400"
+              >
+                at all times.
+              </motion.span>
             </h2>
-            <p className="text-lg text-[#888] max-w-2xl mx-auto mb-4">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="text-lg text-[#888] max-w-2xl mx-auto mb-4"
+            >
               ChatGPT? Gemini? Veo? Sora?
-            </p>
-            <p className="text-xl text-white font-medium">
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              className="text-xl text-white font-medium"
+            >
               No, it's Zamani. It's everything.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
         </div>
       </section>
 
