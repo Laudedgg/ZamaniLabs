@@ -621,9 +621,9 @@ function App() {
               variants={staggerItem}
               className="rounded-2xl p-8 bg-[#141414] border border-white/5"
             >
-              <h3 className="text-2xl font-medium text-white mb-3">Contribute Your Data</h3>
+              <h3 className="text-2xl font-medium text-white mb-3">Voluntary Participation</h3>
               <p className="text-[#888] mb-8">
-                Toggle contribution mode on and help improve AI while maintaining full control over your data.
+                <span className="text-emerald-400 font-medium">Contribution layer.</span> Your natural interactions help train AI through RLHF—with full consent, transparent tracking, and fair compensation.
               </p>
 
               {/* UI Mockup - Consent Toggle Interface */}
