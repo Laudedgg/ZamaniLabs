@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building, Bot, Home, ShoppingBag, Mic } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { createPortal } from 'react-dom';
+import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building, Bot, Home, ShoppingBag, Mic, ImagePlus } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 
 // Animation variants with proper typing
@@ -40,6 +41,9 @@ function App() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [activePage, setActivePage] = useState(window.location.pathname);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const modelBtnRef = useRef<HTMLButtonElement>(null);
+  const portalDropdownRef = useRef<HTMLDivElement>(null);
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, right: 0 });
 
   const models = [
     'Zamani Pro',
@@ -86,7 +90,10 @@ function App() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const clickedInsideButton = dropdownRef.current?.contains(target);
+      const clickedInsidePortal = portalDropdownRef.current?.contains(target);
+      if (!clickedInsideButton && !clickedInsidePortal) {
         setModelDropdownOpen(false);
       }
     };
@@ -98,6 +105,18 @@ function App() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, [modelDropdownOpen]);
+
+  // Calculate dropdown position when opening
+  const openModelDropdown = useCallback(() => {
+    if (!modelDropdownOpen && modelBtnRef.current) {
+      const rect = modelBtnRef.current.getBoundingClientRect();
+      setDropdownPos({
+        top: rect.top,
+        right: window.innerWidth - rect.right,
+      });
+    }
+    setModelDropdownOpen(!modelDropdownOpen);
   }, [modelDropdownOpen]);
 
   const handleSendMessage = () => {
@@ -281,19 +300,18 @@ function App() {
                   >
                     <Send className="w-4 h-4" />
                   </button>
-                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
-                    <Sparkles className="w-4 h-4" />
-                  </button>
-                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
-                    <MessageSquare className="w-4 h-4" />
-                  </button>
-                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
-                    <Mic className="w-4 h-4" />
+                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors" title="Upload image">
+                    <ImagePlus className="w-4 h-4" />
                   </button>
                 </div>
 
                 {/* Right Controls */}
                 <div className="flex items-center gap-2">
+                  {/* Voice Prompt */}
+                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors" title="Voice prompt">
+                    <Mic className="w-4 h-4" />
+                  </button>
+
                   {/* Consent Toggle */}
                   <button
                     type="button"
@@ -320,51 +338,59 @@ function App() {
                   {/* Model Selector */}
                   <div className="relative" ref={dropdownRef}>
                     <button
+                      ref={modelBtnRef}
                       type="button"
-                      onClick={() => setModelDropdownOpen(!modelDropdownOpen)}
+                      onClick={openModelDropdown}
                       className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#252525] border border-white/10 hover:border-white/20 transition-colors"
                     >
                       <span className="text-xs text-white font-medium">{selectedModel}</span>
                       <ChevronDown className={`w-3.5 h-3.5 text-[#888] transition-transform ${modelDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
-
-                    {/* Dropdown Menu - Opens Upward */}
-                    {modelDropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute bottom-full right-0 mb-2 w-56 rounded-2xl bg-[#1a1a1a] border border-white/10 shadow-2xl py-2 z-50"
-                      >
-                        <p className="px-4 py-2 text-xs text-[#666] border-b border-white/5 mb-1">Choose a model</p>
-                        <div className="max-h-72 overflow-y-auto">
-                          {models.map((model) => (
-                            <button
-                              key={model}
-                              type="button"
-                              onClick={() => {
-                                setSelectedModel(model);
-                                setModelDropdownOpen(false);
-                              }}
-                              className={`w-full px-4 py-3 text-left text-sm flex items-center justify-between transition-colors ${
-                                selectedModel === model
-                                  ? 'bg-emerald-500/10 text-emerald-400'
-                                  : 'text-[#ccc] hover:text-white hover:bg-white/5'
-                              }`}
-                            >
-                              <span>{model}</span>
-                              {selectedModel === model && (
-                                <Check className="w-3.5 h-3.5 flex-shrink-0" />
-                              )}
-                            </button>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Model Dropdown Portal - renders outside overflow-hidden */}
+            {modelDropdownOpen && createPortal(
+              <motion.div
+                ref={portalDropdownRef}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.15 }}
+                className="fixed w-56 rounded-2xl bg-[#1a1a1a] border border-white/10 shadow-2xl py-2 z-[9999]"
+                style={{
+                  top: `${dropdownPos.top - 8}px`,
+                  right: `${dropdownPos.right}px`,
+                  transform: 'translateY(-100%)',
+                }}
+              >
+                <p className="px-4 py-2 text-xs text-[#666] border-b border-white/5 mb-1">Choose a model</p>
+                <div className="max-h-56 overflow-y-auto">
+                  {models.map((model) => (
+                    <button
+                      key={model}
+                      type="button"
+                      onClick={() => {
+                        setSelectedModel(model);
+                        setModelDropdownOpen(false);
+                      }}
+                      className={`w-full px-4 py-2.5 text-left text-sm flex items-center justify-between transition-colors ${
+                        selectedModel === model
+                          ? 'bg-emerald-500/10 text-emerald-400'
+                          : 'text-[#ccc] hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      <span>{model}</span>
+                      {selectedModel === model && (
+                        <Check className="w-3.5 h-3.5 flex-shrink-0" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </motion.div>,
+              document.body
+            )}
 
             {/* Action Chips */}
             <motion.div
