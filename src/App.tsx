@@ -453,7 +453,7 @@ function App() {
       </section>
 
       {/* Ecosystem Section - Explore the Zamani ecosystem */}
-      <section className="py-20 md:py-32 px-6">
+      <section className="pt-10 md:pt-16 pb-20 md:pb-32 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
