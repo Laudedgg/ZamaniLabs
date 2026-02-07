@@ -1237,61 +1237,60 @@ function App() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeIn}
-        className="py-12 px-6 border-t border-white/5"
+        className="py-6 md:py-10 px-4 md:px-6 border-t border-white/5 pb-24 md:pb-10"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-5 h-5 text-white" />
-                <span className="text-lg font-medium text-white">Zamani Labs</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-6 md:mb-10">
+            <div className="col-span-2 md:col-span-1 mb-2 md:mb-0">
+              <div className="flex items-center gap-2 mb-2 md:mb-4">
+                <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                <span className="text-base md:text-lg font-medium text-white">Zamani Labs</span>
               </div>
-              <p className="text-sm text-[#666] mb-2">Contact</p>
-              <a href="mailto:hello@zamanilabs.com" className="text-sm text-white flex items-center gap-2 hover:opacity-80">
+              <a href="mailto:hello@zamanilabs.com" className="text-xs md:text-sm text-white flex items-center gap-1.5 hover:opacity-80">
                 hello@zamanilabs.com <Mail className="w-3 h-3" />
               </a>
-              <p className="mt-6 text-xs text-[#666]">
-                2026 Zamani Labs Inc. All rights reserved.
-              </p>
             </div>
 
             <div>
-              <p className="font-medium text-sm text-white mb-4">Product</p>
-              <ul className="space-y-2">
-                <li><a href="/chat" className="text-sm text-[#666] hover:text-white transition-colors">ZamaniChat</a></li>
-                <li><a href="/marketplace" className="text-sm text-[#666] hover:text-white transition-colors">Marketplace</a></li>
-                <li><a href="/api" className="text-sm text-[#666] hover:text-white transition-colors">API</a></li>
-                <li><a href="/pricing" className="text-sm text-[#666] hover:text-white transition-colors">Pricing</a></li>
+              <p className="font-medium text-xs md:text-sm text-white mb-2 md:mb-4">Product</p>
+              <ul className="space-y-1 md:space-y-2">
+                <li><a href="/chat" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">ZamaniChat</a></li>
+                <li><a href="/marketplace" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">Marketplace</a></li>
+                <li><a href="/api" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">API</a></li>
+                <li><a href="/pricing" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">Pricing</a></li>
               </ul>
             </div>
 
             <div>
-              <p className="font-medium text-sm text-white mb-4">Company</p>
-              <ul className="space-y-2">
-                <li><a href="/blog" className="text-sm text-[#666] hover:text-white transition-colors">Blog</a></li>
-                <li><a href="/about" className="text-sm text-[#666] hover:text-white transition-colors">About</a></li>
-                <li><a href="/terms" className="text-sm text-[#666] hover:text-white transition-colors">Terms</a></li>
-                <li><a href="/privacy" className="text-sm text-[#666] hover:text-white transition-colors">Privacy</a></li>
+              <p className="font-medium text-xs md:text-sm text-white mb-2 md:mb-4">Company</p>
+              <ul className="space-y-1 md:space-y-2">
+                <li><a href="/blog" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">Blog</a></li>
+                <li><a href="/about" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">About</a></li>
+                <li><a href="/terms" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">Terms</a></li>
+                <li><a href="/privacy" className="text-xs md:text-sm text-[#666] hover:text-white transition-colors">Privacy</a></li>
               </ul>
             </div>
 
-            <div>
-              <p className="font-medium text-sm text-white mb-4">Stay updated</p>
-              <div className="flex">
+            <div className="col-span-2 md:col-span-1 mt-2 md:mt-0">
+              <p className="font-medium text-xs md:text-sm text-white mb-2 md:mb-4">Stay updated</p>
+              <div className="flex max-w-xs">
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="flex-1 px-3 py-2 text-sm rounded-l-lg bg-[#1a1a1a] border border-white/10 text-white placeholder:text-[#666] outline-none focus:border-white/20"
+                  className="flex-1 px-2.5 py-1.5 md:px-3 md:py-2 text-xs md:text-sm rounded-l-lg bg-[#1a1a1a] border border-white/10 text-white placeholder:text-[#666] outline-none focus:border-white/20"
                 />
                 <button
                   type="button"
-                  className="px-4 py-2 text-sm rounded-r-lg bg-white text-black font-medium hover:bg-white/90 transition-colors"
+                  className="px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm rounded-r-lg bg-white text-black font-medium hover:bg-white/90 transition-colors"
                 >
                   Subscribe
                 </button>
               </div>
             </div>
           </div>
+          <p className="text-[10px] md:text-xs text-[#666] text-center md:text-left">
+            © 2026 Zamani Labs Inc. All rights reserved.
+          </p>
         </div>
       </motion.footer>
 
