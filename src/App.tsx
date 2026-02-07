@@ -183,7 +183,7 @@ function App() {
       </motion.nav>
 
       {/* Hero Section with ZamaniChat Interface */}
-      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center overflow-hidden">
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 min-h-[90vh] flex flex-col justify-center overflow-x-hidden overflow-y-visible">
         {/* Background Images with Crossfade */}
         <div className="absolute inset-0 z-0">
           {backgroundImages.map((bg, index) => (
@@ -331,7 +331,7 @@ function App() {
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute top-full right-0 mt-2 w-40 rounded-xl bg-[#1a1a1a] border border-white/10 shadow-xl overflow-hidden z-10"
+                        className="absolute top-full right-0 mt-2 w-52 rounded-xl bg-[#1a1a1a] border border-white/10 shadow-xl max-h-80 overflow-y-auto z-50"
                       >
                         {models.map((model) => (
                           <button
