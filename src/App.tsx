@@ -463,10 +463,10 @@ function App() {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
-              Four layers. One platform.
+              Explore the Zamani ecosystem.
             </h2>
             <p className="text-lg text-[#888] max-w-2xl mx-auto">
-              Interface, contribution, distribution, and infrastructure—Zamani is the complete stack
+              Three tools to fit your unique workflow. Interface, distribution, and infrastructure—the complete stack
               for consented human-AI interaction data.
             </p>
           </motion.div>
