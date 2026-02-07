@@ -528,7 +528,7 @@ function App() {
             >
               <h3 className="text-xl font-medium text-white mb-2">Zamani Marketplace</h3>
               <p className="text-sm text-[#888] mb-4">
-                <span className="text-emerald-400 font-medium">Distribution layer.</span> Connect contributors with AI companies. Track earnings and maximize value with Agent Ryan—your personal AI assistant.
+                <span className="text-emerald-400 font-medium">Distribution layer.</span> Connect contributors with AI companies that need high-quality RLHF data for model improvement. Track earnings and maximize value with Agent Ryan—your personal AI assistant that negotiates on your behalf and finds the best opportunities for your contribution style.
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-sm text-[#666]">Coming soon</span>
