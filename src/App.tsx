@@ -207,13 +207,9 @@ function App() {
               <Sparkles className="w-8 h-8 text-emerald-400" />
               <span className="text-lg text-[#888]">ZamaniChat</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white mb-6">
-              AI will meet you where you are,<br />at all times.
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white">
+              The consent layer for AI.
             </h1>
-            <p className="text-lg md:text-xl text-[#888] max-w-3xl mx-auto">
-              ChatGPT? Gemini? Veo? Sora?<br />
-              <span className="text-white font-medium">No, it's Zamani. It's everything.</span>
-            </p>
           </motion.div>
 
           {/* Chat Input Interface */}
@@ -545,7 +541,7 @@ function App() {
         </div>
       </section>
 
-      {/* Meaning of Zamani Section */}
+      {/* AI Meets You Where You Are Section */}
       <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
         <motion.div
           initial="hidden"
@@ -554,16 +550,28 @@ function App() {
           variants={fadeInUp}
           className="max-w-4xl mx-auto text-center"
         >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 leading-[1.1]">
+            AI will meet you where you are,<br />at all times.
+          </h2>
+
+          <p className="text-xl md:text-2xl text-[#888] leading-relaxed mb-4">
+            ChatGPT? Gemini? Veo? Sora?
+          </p>
+
+          <p className="text-2xl md:text-3xl text-white font-medium mb-12">
+            No, it's Zamani. It's everything.
+          </p>
+
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
             <Sparkles className="w-4 h-4 text-emerald-400" />
             <span className="text-sm text-emerald-400 font-medium">The Meaning of Zamani</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 leading-[1.1]">
+          <h3 className="text-3xl md:text-4xl font-medium text-white mb-6 leading-[1.1]">
             A name rooted in culture.
-          </h2>
+          </h3>
 
-          <p className="text-lg md:text-xl text-[#888] leading-relaxed mb-8">
+          <p className="text-lg text-[#888] leading-relaxed mb-8">
             <span className="text-white font-medium">Zamani</span> is a beautiful fusion of languages—
             drawing from <span className="text-emerald-400">Arabic</span>, <span className="text-emerald-400">Swahili</span>,
             and <span className="text-emerald-400">Hausa</span>. It represents time, heritage, and the collective wisdom
