@@ -160,13 +160,9 @@ function App() {
             animate={{ opacity: 1, height: 'auto' }}
             className="md:hidden mt-4 pb-4 space-y-4 border-t border-white/10 pt-4"
           >
-            <a href="/chat" className="block py-2 text-[#888]">ZamaniChat</a>
-            <a href="/marketplace" className="block py-2 text-[#888]">Marketplace</a>
-            <a href="/api" className="block py-2 text-[#888]">API</a>
-            <a href="/pricing" className="block py-2 text-[#888]">Pricing</a>
-            <a href="/chat" className="block text-center py-2.5 rounded-full bg-white text-black font-medium mt-4">
-              Try ZamaniChat
-            </a>
+            <a href="/" className="block py-2 text-[#888] hover:text-white transition-colors">Home</a>
+            <a href="/marketplace" className="block py-2 text-[#888] hover:text-white transition-colors">Marketplace</a>
+            <a href="/chat" className="block py-2 text-[#888] hover:text-white transition-colors">Zamani Chat</a>
           </motion.div>
         )}
       </motion.nav>
