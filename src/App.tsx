@@ -43,7 +43,7 @@ function App() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const modelBtnRef = useRef<HTMLButtonElement>(null);
   const portalDropdownRef = useRef<HTMLDivElement>(null);
-  const [dropdownPos, setDropdownPos] = useState({ top: 0, right: 0 });
+  const [dropdownPos, setDropdownPos] = useState({ bottom: 0, right: 0 });
 
   const models = [
     'Zamani Pro',
@@ -120,7 +120,8 @@ function App() {
       if (!prev && modelBtnRef.current) {
         const rect = modelBtnRef.current.getBoundingClientRect();
         setDropdownPos({
-          top: rect.top,
+          // bottom of dropdown should be at top of button minus gap
+          bottom: window.innerHeight - rect.top + 8,
           right: window.innerWidth - rect.right,
         });
       }
@@ -369,9 +370,8 @@ function App() {
                 transition={{ duration: 0.15 }}
                 className="fixed w-56 rounded-2xl bg-[#1a1a1a] border border-white/10 shadow-2xl py-2 z-[9999]"
                 style={{
-                  top: `${dropdownPos.top - 8}px`,
+                  bottom: `${dropdownPos.bottom}px`,
                   right: `${dropdownPos.right}px`,
-                  transform: 'translateY(-100%)',
                 }}
               >
                 <p className="px-4 py-2 text-xs text-[#666] border-b border-white/5 mb-1">Choose a model</p>
