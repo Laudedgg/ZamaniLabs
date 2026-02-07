@@ -967,6 +967,30 @@ function App() {
               <p className="text-sm text-[#888]">Zamani - Ancient times, tradition</p>
             </motion.div>
           </motion.div>
+
+          {/* Zamani Token Brief */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="mt-20 text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+              <Sparkles className="w-4 h-4 text-emerald-400" />
+              <span className="text-sm text-emerald-400 font-medium">Zamani Token</span>
+            </div>
+            <h3 className="text-3xl md:text-4xl font-medium text-white mb-4">
+              Powering rewards and incentives.
+            </h3>
+            <p className="text-lg text-[#888] max-w-2xl mx-auto mb-2">
+              The Zamani token will launch on Base, designed to reward contributors
+              and incentivize participation in the consent-first AI ecosystem.
+            </p>
+            <p className="text-sm text-[#666] max-w-xl mx-auto">
+              Coming soon.
+            </p>
+          </motion.div>
         </div>
       </section>
 
