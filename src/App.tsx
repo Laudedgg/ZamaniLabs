@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building, Bot, Home, ShoppingBag } from 'lucide-react';
+import { ArrowRight, Menu, X, Mail, MessageSquare, Shield, Heart, ChevronDown, Send, Check, Sparkles, DollarSign, Eye, ToggleRight, Users, Building, Bot, Home, ShoppingBag, Mic } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 
 // Animation variants with proper typing
@@ -287,6 +287,9 @@ function App() {
                   </button>
                   <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
                     <MessageSquare className="w-4 h-4" />
+                  </button>
+                  <button type="button" className="p-2.5 rounded-xl bg-[#252525] text-[#888] hover:text-white hover:bg-[#2a2a2a] transition-colors">
+                    <Mic className="w-4 h-4" />
                   </button>
                 </div>
 
