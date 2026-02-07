@@ -623,7 +623,7 @@ function App() {
             >
               <h3 className="text-2xl font-medium text-white mb-3">Voluntary Participation</h3>
               <p className="text-[#888] mb-8">
-                <span className="text-emerald-400 font-medium">Contribution layer.</span> Your natural interactions help train AI through RLHF—with full consent, transparent tracking, and fair compensation.
+                <span className="text-emerald-400 font-medium">Contribution layer.</span> Your natural interactions help train AI through RLHF—with full consent, transparent tracking, and fair compensation. When you contribute, you earn Contribution Points that convert into real cash, funded by AI companies that pay Zamani Labs for transparent, consented model-improvement data.
               </p>
 
               {/* UI Mockup - Consent Toggle Interface */}
@@ -645,11 +645,11 @@ function App() {
                     </div>
                   </div>
                   <div className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a1a]">
-                    <span className="text-sm text-[#888]">Session contributions</span>
-                    <span className="text-sm text-white font-medium">24</span>
+                    <span className="text-sm text-[#888]">Contribution Points</span>
+                    <span className="text-sm text-white font-medium">847 pts</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#1a1a1a]">
-                    <span className="text-sm text-[#888]">Lifetime value earned</span>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                    <span className="text-sm text-emerald-400">Cash value</span>
                     <span className="text-sm text-emerald-400 font-medium">$127.50</span>
                   </div>
                 </div>
@@ -663,7 +663,7 @@ function App() {
             >
               <h3 className="text-2xl font-medium text-white mb-3">Your Built-in Wallet</h3>
               <p className="text-[#888] mb-8">
-                Every user gets a wallet to receive earnings from contributions and marketplace activities. Track your USDC balance and upcoming Zamani tokens.
+                Every user gets a wallet to receive earnings. Your Contribution Points automatically convert to real cash (USDC), funded by AI companies paying for your consented data. Track your balance and upcoming Zamani tokens.
               </p>
 
               {/* UI Mockup - Wallet */}
@@ -895,19 +895,19 @@ function App() {
                     <Heart className="w-4 h-4 text-emerald-400" />
                     <span className="text-xs text-emerald-400">Contribution recorded</span>
                   </div>
-                  <span className="text-xs text-white font-medium">+$0.03</span>
+                  <span className="text-xs text-white font-medium">+3 pts ($0.03)</span>
                 </div>
               </div>
 
               {/* Stats Row */}
               <div className="grid grid-cols-3 gap-3">
                 <div className="p-3 rounded-lg bg-[#141414] border border-white/5 text-center">
-                  <p className="text-lg font-medium text-white">847</p>
-                  <p className="text-xs text-[#666]">Contributions</p>
+                  <p className="text-lg font-medium text-white">847 pts</p>
+                  <p className="text-xs text-[#666]">Points Earned</p>
                 </div>
                 <div className="p-3 rounded-lg bg-[#141414] border border-white/5 text-center">
                   <p className="text-lg font-medium text-emerald-400">$127.40</p>
-                  <p className="text-xs text-[#666]">Earned</p>
+                  <p className="text-xs text-[#666]">Cash Value</p>
                 </div>
                 <div className="p-3 rounded-lg bg-[#141414] border border-white/5 text-center">
                   <p className="text-lg font-medium text-white">100%</p>
