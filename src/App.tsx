@@ -32,7 +32,7 @@ const staggerItem: Variants = {
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isContributing, setIsContributing] = useState(true);
-  const [selectedModel, setSelectedModel] = useState('Zamani Pro');
+  const [selectedModel, setSelectedModel] = useState('Model');
   const [modelDropdownOpen, setModelDropdownOpen] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
