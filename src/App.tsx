@@ -41,7 +41,17 @@ function App() {
   const [activePage, setActivePage] = useState(window.location.pathname);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const models = ['Zamani Pro', 'GPT-4o', 'Claude 3.5', 'Gemini Pro'];
+  const models = [
+    'Zamani Pro',
+    'GPT-5',
+    'Claude Opus 4.6',
+    'Claude Sonnet 4.5',
+    'GPT-4o',
+    'Gemini 2.0 Flash',
+    'Gemini 2.0 Pro',
+    'DeepSeek V3',
+    'Llama 4'
+  ];
   const backgroundImages = ['/hero-bg.jpg', '/hero-bg-2.jpg'];
 
   const placeholderExamples = [
@@ -758,9 +768,10 @@ function App() {
                 <div className="divide-y divide-white/5">
                   {[
                     { id: 'zamani', name: 'Zamani Pro', provider: 'Zamani Labs', selected: true },
-                    { id: 'gpt', name: 'GPT-4o', provider: 'OpenAI', selected: false },
-                    { id: 'claude', name: 'Claude 3.5', provider: 'Anthropic', selected: false },
-                    { id: 'gemini', name: 'Gemini Pro', provider: 'Google', selected: false },
+                    { id: 'gpt5', name: 'GPT-5', provider: 'OpenAI', selected: false },
+                    { id: 'claude-opus', name: 'Claude Opus 4.6', provider: 'Anthropic', selected: false },
+                    { id: 'gemini2', name: 'Gemini 2.0 Pro', provider: 'Google', selected: false },
+                    { id: 'deepseek', name: 'DeepSeek V3', provider: 'DeepSeek', selected: false },
                   ].map((model) => (
                     <div key={model.id} className={`p-3 flex items-center justify-between ${model.selected ? 'bg-[#1a1a1a]' : ''}`}>
                       <div>
