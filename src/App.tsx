@@ -606,57 +606,6 @@ function App() {
         </div>
       </section>
 
-      {/* Meaning of Zamani Section */}
-      <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
-              The meaning of Zamani.
-            </h2>
-            <p className="text-lg text-[#888] max-w-2xl mx-auto">
-              A beautiful fusion of languages—drawing from Arabic, Swahili, and Hausa.
-              It represents time, heritage, and the collective wisdom that connects us all.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6"
-          >
-            <motion.div
-              variants={staggerItem}
-              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
-            >
-              <h3 className="text-xl font-medium text-white mb-2">Arabic</h3>
-              <p className="text-sm text-[#888]">زمان (Zaman) - Time, era, epoch</p>
-            </motion.div>
-            <motion.div
-              variants={staggerItem}
-              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
-            >
-              <h3 className="text-xl font-medium text-white mb-2">Swahili</h3>
-              <p className="text-sm text-[#888]">Zamani - The distant past, heritage</p>
-            </motion.div>
-            <motion.div
-              variants={staggerItem}
-              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
-            >
-              <h3 className="text-xl font-medium text-white mb-2">Hausa</h3>
-              <p className="text-sm text-[#888]">Zamani - Ancient times, tradition</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Two Column Feature Cards - Like Muse's "Bring Your Ideas" / "Export Anywhere" */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
@@ -961,6 +910,57 @@ function App() {
                   <p className="text-xs text-[#666]">Verified</p>
                 </div>
               </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Meaning of Zamani Section */}
+      <section className="py-20 md:py-32 px-6 bg-[#0f0f0f]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-medium text-white mb-6">
+              The meaning of Zamani.
+            </h2>
+            <p className="text-lg text-[#888] max-w-2xl mx-auto">
+              A beautiful fusion of languages—drawing from Arabic, Swahili, and Hausa.
+              It represents time, heritage, and the collective wisdom that connects us all.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Arabic</h3>
+              <p className="text-sm text-[#888]">زمان (Zaman) - Time, era, epoch</p>
+            </motion.div>
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Swahili</h3>
+              <p className="text-sm text-[#888]">Zamani - The distant past, heritage</p>
+            </motion.div>
+            <motion.div
+              variants={staggerItem}
+              className="rounded-2xl p-6 bg-[#141414] border border-white/5"
+            >
+              <h3 className="text-xl font-medium text-white mb-2">Hausa</h3>
+              <p className="text-sm text-[#888]">Zamani - Ancient times, tradition</p>
             </motion.div>
           </motion.div>
         </div>
