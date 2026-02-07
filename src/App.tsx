@@ -101,12 +101,14 @@ function App() {
       setModelDropdownOpen(false);
     };
 
-    const handleScroll = () => {
+    const handleScroll = (event: Event) => {
+      // Ignore scrolls inside the dropdown itself (e.g. scrolling through models list)
+      if (portalDropdownRef.current?.contains(event.target as Node)) return;
       setModelDropdownOpen(false);
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    window.addEventListener('scroll', handleScroll, true); // capture phase to catch all scrolls
+    window.addEventListener('scroll', handleScroll, true); // capture phase to catch page scrolls
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
